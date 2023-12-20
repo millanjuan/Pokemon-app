@@ -1,0 +1,34 @@
+.landingContainer {
+    margin:0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("C:\Users\milla\OneDrive\Documentos\Henry\PI\PI-Pokemon-main\client\src\images\Landing-background.jpg");
+    background-size:cover;
+    overflow: hidden;
+}
+
+.titlewrapper{
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: top 1s ease;
+}
+
+.titleImage {
+    width: 200px;
+    height: auto;
+}
+
+.buttonWrapper {
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db ;
+}
