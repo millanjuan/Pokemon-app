@@ -13,7 +13,6 @@ const getPokemonByName = async (req, res) => {
     });
 
     let result;
-
     if (pokemonFromDb.length !== 0) {
       result = formatPokemonFromDB(pokemonFromDb);
       return res.status(200).json(result);

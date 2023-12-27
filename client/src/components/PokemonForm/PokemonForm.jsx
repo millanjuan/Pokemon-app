@@ -18,7 +18,6 @@ const PokemonForm = () => {
     weight: null,
     types: [],  
     });
-
     const [errors, setErrors] = useState({});
     const [types, setTypes] = useState([])
 
@@ -73,9 +72,8 @@ const PokemonForm = () => {
           pokemonData
         );
 
-        if (response.data.success) {
+        if (response.data.name) {
           window.alert("¡Pokemon successfully created!");
-          console.log("Types:", pokemonData.types);
           setPokemonData({
             name: "",
             img: "",
