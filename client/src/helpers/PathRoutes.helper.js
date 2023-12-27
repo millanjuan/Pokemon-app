@@ -3,7 +3,7 @@ const PATHROUTES = {
     HOME: "/home",
     DETAIL: "/detail/:name",
     FORM: "/form",
-    SEARCH: "/search"
+    SEARCH: "/search",
 
 }
 

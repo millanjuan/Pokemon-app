@@ -18,6 +18,7 @@ const formatPokemonFromDB = (pokemonDB) => {
     } else return ({
         id: pokemonDB.id,
         name: pokemonDB.name,
+        types: pokemonDB.types,
         img: pokemonDB.img,
         hp: pokemonDB.hp,
         attack: pokemonDB.attack,

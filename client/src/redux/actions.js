@@ -1,4 +1,4 @@
-import { SET_ALL_POKEMONS, SET_SEARCHED_POKEMON, CLEAR_SEARCHED_POKEMON } from "./action_types";
+import { SET_ALL_POKEMONS, SET_SEARCHED_POKEMON, CLEAR_SEARCHED_POKEMON, FILTER_BY_TYPE_AND_ORIGIN, ORDER_CARDS } from "./action_types";
 import axios from "axios";
 export const setAllPokemons = () => {
     return async (dispatch) => {

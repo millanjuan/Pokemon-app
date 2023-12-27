@@ -8,7 +8,7 @@ const getPokemonById = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const responseApi = await axios.get(`${URL_BASE}/${id}`);
+        const responseApi = await axios.get(`${URL_BASE}/${(id)}`);
         const foundInApi = formatPokemonFromApi(responseApi.data);
 
         const validUUID = uuidv4(id)
@@ -24,8 +24,8 @@ const getPokemonById = async (req, res) => {
             res.status(400).json({error:"Pokemon not found"});
         }
     } catch (error) {
-        console.error("Error fetching Pokemons:", error)
-        res.status(500).json({error: "Internal server error"})
+        console.error("Error fetching Pokemon:", error)
+        res.status(500).json({error: error.message})
     }
 };
 

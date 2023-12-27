@@ -19,12 +19,9 @@ module.exports = (sequelize) => {
       }
     },
 
-    image: {
+    img: {
       type:DataTypes.STRING,
       allowNull: false,
-      validate: {
-        isUrl: true,
-      },
     },
 
     hp: {

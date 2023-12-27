@@ -1,41 +1,40 @@
 const axios = require("axios");
 const { URL_BASE } = require("../helpers/urlHelpers");
-const { Pokemons } = require ("../db");
+const { Pokemons, Type } = require("../db");
 const { formatPokemonFromApi, formatPokemonFromDB } = require("../handlers/pokemonHandlers");
 
 const getPokemonByName = async (req, res) => {
+  const { name } = req.params;
 
-    try {
-        const {name} = req.query;
+  try {
+    const pokemonFromDb = await Pokemons.findOne({
+      where: { name: name },
+      include: { model: Type },
+    });
 
-        if (!name || typeof name !== 'string' || name.trim() === '') {
-            return res.status(400).json({error: "Invalid Name"});
+    let result;
+
+    if (pokemonFromDb.length !== 0) {
+      result = formatPokemonFromDB(pokemonFromDb);
+      return res.status(200).json(result);
+    } else {
+      try {
+        const pokemonFromApi = await axios.get(`${URL_BASE}/${name.toLowerCase()}`);
+
+        result = formatPokemonFromApi(pokemonFromApi.data);
+        return res.status(200).json(result);
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          return res.status(404).json("Pokemon not found");
         }
-
-        const responseApi = await axios.get(`${URL_BASE}/${name}`);
-        const foundInApi = formatPokemonFromApi(responseApi.data);
-
-        const responseDb = await Pokemons.findOne({where: { name: name}});
-        const foundInDb = responseDb ? formatPokemonFromDB(responseDb) : null;
-
-        let result;
-
-
-
-        if(foundInApi.name) {
-            result = foundInApi;
-        } else if (foundInDb) {
-            result = foundInDb;
-        } else {
-            res.status(400).json({error:"Pokemon not found"})
-        }
-
-        res.json(result)
-        
-    } catch (error) {
-        console.error("Error fetching Pokemons:", error)
-        res.status(500).json({error:"Internal server error"})
+        console.error('Error fetching Pokemons from API:', error.message);
+        return res.status(500).json({ error: "Internal server error" });
+      }
     }
-}
+  } catch (error) {
+    console.error('Error fetching Pokemons:', error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
 
 module.exports = getPokemonByName;

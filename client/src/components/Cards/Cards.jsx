@@ -19,8 +19,8 @@ const Cards = () => {
 const indexOfLastItem = currentPage * itemsPerPage;
 const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
-const currentPokemons = searchedPokemon ? [searchedPokemon] : pokemons.slice(indexOfFirstItem, indexOfLastItem);
-
+const searchedPokemonArray = searchedPokemon ? [searchedPokemon] : [];
+const currentPokemons = searchedPokemonArray.length > 0 ? searchedPokemonArray : pokemons.slice(indexOfFirstItem, indexOfLastItem);
 const totalPages = Math.ceil(pokemons.length / itemsPerPage)
 
 const handlePageChange = (pageNumber) => {
@@ -32,26 +32,30 @@ const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setAllPokemons());
   },[dispatch]);
-
+  
   return (
     <div className={styles.wrapperCards}>
-      {currentPokemons.map(({id, name, img, types, hp, attack, defense, speed, height, weight}) => {
-        return (
-          <Card
-          key = {id}
-          id = {id}
-          name = {name}
-          image = {img}
-          types = {types}
-          hp = {hp}
-          attack = {attack}
-          defense = {defense}
-          speed = {speed}
-          height = {height}
-          weight = {weight}
-          />
-        )
-      })}
+      {currentPokemons.length > 0 ? (
+        currentPokemons.map(({id, name, img, types, hp, attack, defense, speed, height, weight}) => {
+          return (
+            <Card
+            key = {id}
+            id = {id}
+            name = {name}
+            image = {img}
+            types = {types}
+            hp = {hp}
+            attack = {attack}
+            defense = {defense}
+            speed = {speed}
+            height = {height}
+            weight = {weight}
+            />
+          )
+        })
+      ): (
+      <h1>Loading...</h1>
+      )}
 
       <div className={styles.paginationControls}>
         {currentPage > 1 && (
