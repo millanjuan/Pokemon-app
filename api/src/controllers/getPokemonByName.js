@@ -4,7 +4,8 @@ const { Pokemons, Type } = require("../db");
 const { formatPokemonFromApi, formatPokemonFromDB } = require("../handlers/pokemonHandlers");
 
 const getPokemonByName = async (req, res) => {
-  const { name } = req.params;
+  const { name } = req.query;
+  console.log(name)
 
   try {
     const pokemonFromDb = await Pokemons.findOne({
@@ -13,7 +14,7 @@ const getPokemonByName = async (req, res) => {
     });
 
     let result;
-    if (pokemonFromDb.length !== 0) {
+    if (pokemonFromDb) {
       result = formatPokemonFromDB(pokemonFromDb);
       return res.status(200).json(result);
     } else {
@@ -23,16 +24,12 @@ const getPokemonByName = async (req, res) => {
         result = formatPokemonFromApi(pokemonFromApi.data);
         return res.status(200).json(result);
       } catch (error) {
-        if (error.response && error.response.status === 404) {
-          return res.status(404).json("Pokemon not found");
-        }
-        console.error('Error fetching Pokemons from API:', error.message);
-        return res.status(500).json({ error: "Internal server error" });
+        res.status(400).json({error: error.message})
       }
     }
   } catch (error) {
     console.error('Error fetching Pokemons:', error.message);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: error.message });
   }
 };
 

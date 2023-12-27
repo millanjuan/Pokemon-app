@@ -44,8 +44,7 @@ function App() {
 const onSearch = async (name) => {
   try {
     dispatch(clearSearchedPokemon());
-    const { data } = await axios.get(`http://localhost:3001/pokemon/name/${name.toLowerCase()}`);
-
+    const { data } = await axios.get(`http://localhost:3001/pokemons/name?name=${name.toLowerCase()}`);
     if (data.name) {
       localStorage.setItem('searchedPokemon', JSON.stringify(data));
       dispatch(setSearchedPokemon(data));

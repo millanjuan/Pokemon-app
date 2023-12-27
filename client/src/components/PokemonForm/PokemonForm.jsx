@@ -41,7 +41,7 @@ const PokemonForm = () => {
 
         setPokemonData({
             ...pokemonData,
-            [name]: value,
+            [name]: value.toLowerCase(),
         });
 
         setErrors({
@@ -68,7 +68,7 @@ const PokemonForm = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await axios.post(
-          "http://localhost:3001/pokemon",
+          "http://localhost:3001/pokemons",
           pokemonData
         );
 

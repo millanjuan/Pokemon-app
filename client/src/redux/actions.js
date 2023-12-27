@@ -3,7 +3,7 @@ import axios from "axios";
 export const setAllPokemons = () => {
     return async (dispatch) => {
         try {
-            const {data} = await axios.get('http://localhost:3001/pokemon');
+            const {data} = await axios.get('http://localhost:3001/pokemons');
             return dispatch ({
                 type: SET_ALL_POKEMONS,
                 payload:data,
