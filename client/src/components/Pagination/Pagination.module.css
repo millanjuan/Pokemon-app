@@ -1,0 +1,67 @@
+.paginationControls {
+  display: flex;
+  flex-wrap: wrap; /* Permitir el ajuste de elementos en varias líneas */
+  justify-content: center;
+  align-items: center;
+  margin: 10px 170px 0 0;
+}
+
+.paginationButton {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px; /* Ajustado el tamaño de fuente para mejor adaptabilidad */
+  background-color: rgba(255, 255, 255, 0.325);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.755);
+  border-radius: 20px; /* Reducido el radio de borde */
+  padding: 5px 15px; /* Ajustado el relleno */
+  margin: 5px; /* Ajustado el margen entre botones */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.paginationButton:hover {
+  color: #ffffff;
+  background-color: #2980b9;
+}
+
+.activePage {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 28px; /* Ajustado el tamaño de fuente para mejor adaptabilidad */
+  color: #ffffff;
+  background-color: #2980b9;
+  border: none;
+  border-radius: 20px; /* Reducido el radio de borde */
+  padding: 5px 15px; /* Ajustado el relleno */
+  margin: 5px; /* Ajustado el margen entre botones */
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .paginationControls {
+    margin: 10px 0;
+  }
+
+  .paginationButton {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+
+  .activePage {
+    font-size: 22px;
+    padding: 5px 10px;
+  }
+}
+
+/* Media query para dispositivos pequeños (hasta 480px) */
+@media only screen and (max-width: 480px) {
+  .paginationButton {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+
+  .activePage {
+    font-size: 18px;
+    padding: 4px 8px;
+  }
+}

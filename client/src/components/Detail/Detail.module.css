@@ -1,0 +1,112 @@
+.wrapperDetail {
+    margin: auto;
+    margin-top: 25px;
+    width: 90%;
+    height: 800px;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.325);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    align-items: center;
+    padding: 20px; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.wrapperDetail.loaded {
+    opacity: 1; 
+    visibility: visible;
+  }
+
+.wrapperImg img {
+    width: 100%;
+    transition: transform 0.3s ease-in-out; 
+}
+
+.wrapperImg img:hover {
+    transform: scale(1.1); 
+}
+
+.wrapperText {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 20px; 
+}
+
+.wrapperName {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: rgba(0, 0, 0, 0.755);
+    margin-top: 10px;
+    transition: color 0.3s ease-in-out;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.755);
+    padding-bottom: 10px;
+}
+
+.wrapperStats {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.755);
+    margin-top: 10px;
+    transition: color 0.3s ease-in-out;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.755);
+    padding-bottom: 10px; 
+}
+
+.typesText {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+    margin-top: 20px; 
+}
+
+.typesText h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.755);
+    margin-right: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapperDetail {
+      flex-direction: column; 
+      height: auto; 
+      width: 80%;
+    }
+  
+    .wrapperText {
+      width: 50%; 
+      margin-left: 0;
+    }
+  
+    .wrapperImg img {
+      margin-bottom: 20px; 
+      width: 50%;
+    }
+    .wrapperName {
+        font-size: 20px;
+    }
+
+    .wrapperStats{
+        font-size: 15px;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .wrapperDetail {
+      padding: 0px; 
+    }
+  
+    .wrapperImg img {
+      margin-bottom: 10px; 
+    }
+
+    .wrapperText {
+        width: 30%; 
+        margin-left: 0;
+      }
+  }

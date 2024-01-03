@@ -1,0 +1,47 @@
+.order {
+    display: flex;
+    flex-direction: column;
+}
+  
+select {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #3498db;
+  border-radius: 4px;
+  background-color: #3498db;
+  overflow: hidden; 
+}
+
+select option {
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  color: white;
+  padding: 8px;
+  transition: background-color 0.3s ease;
+}
+
+select option:checked {
+  background-color: #2980b9;
+}
+  
+select:hover {
+  border-color: white;
+  height: auto; 
+}
+  
+select:active {
+  background-color: #2980b9;
+}
+  
+.sidebar {
+  border-radius: 30px;
+  background-color: #2c3e50b1;
+  padding: 20px;
+  margin-right: 20px;
+  margin-top: 12px;
+  min-width: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 300px;
+}

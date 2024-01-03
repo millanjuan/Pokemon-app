@@ -38,12 +38,12 @@ const validation = (data) => {
   });
 
     //Type
-    if (data.types.length === 0) {
-        errors.types = "Please select at least one type.";
-      }
-
-      return errors;
-
-};
+    if (data.types.filter(type => type !== "").length < 2) {
+      errors.types = "Please select at least two types.";
+    }
+  
+    return errors;
+  };
+  
 
 export default validation;

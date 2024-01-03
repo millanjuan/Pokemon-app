@@ -1,4 +1,96 @@
-.form {
-    display: flex;
-    flex-direction: column;
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.755);
+  margin-top: 10px;
+  transition: color 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.825);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 25px;
+}
+
+h2 {
+  text-align: center; /* Centrar el título horizontalmente */
+}
+
+img {
+  width: 40%;
+  align-self: center;
+}
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  margin-bottom: 20px; /* Añadido margen inferior entre campos */
+}
+
+label {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+select {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.755);
+  margin-top: 10px;
+  transition: color 0.3s ease-in-out;
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  font-size: 25px;
+  transition: border-color 0.3s ease;
+}
+
+input.error,
+select.error {
+  border-color: #e74c3c;
+}
+
+.errors {
+  color: #e74c3c;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.button {
+  width: 50%;
+  background-color: #3498db;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 30px;
+  margin-top: 15px;
+  align-self: center;
+}
+select{
+  color:white
+}
+
+.button:hover {
+  background-color: #2980b9;
+}
+
+.stringField{
+  display: flex;
+  flex-direction: column;
 }

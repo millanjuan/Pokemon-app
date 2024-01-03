@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 330PX; 
+    border-radius: 25px; 
+    background-color: #2c3e50;
+    border: 2px solid #3498db; 
+    position: relative;
+    margin:10px
+  }
+  
+  .input {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    background-color: transparent;
+    height: 100%;
+    width: 70%;
+    padding: 10px 10px 10px 20px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+  }
+  
+  .input::placeholder {
+    color: white;
+    opacity: 0.5;
+  }
+  
+  .button {
+    font-size: 20px;
+    height: 100%;
+    width: 30%;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0 25px 25px 0;
+  }
+  
+  .button:hover {
+    background-color: #2980b9; /* Nuevo color del botón al pasar el ratón */
+  }
+  

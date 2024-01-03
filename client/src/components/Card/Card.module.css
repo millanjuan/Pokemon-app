@@ -1,0 +1,111 @@
+.cardContainer {
+    flex: 0 0 calc(25%);
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.325);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    margin: 10px;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .cardContainer.loaded {
+    opacity: 1; 
+    visibility: visible;
+  }
+
+.cardContainer:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.wrapperCardImage img {
+  width: 200px;
+  transition: all 0.3s ease-in-out;
+}
+
+.wrapperCardImage img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.linkName {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wrapperName {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 35px;
+  color: rgba(0, 0, 0, 0.755);
+  margin-top: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.linkName:hover .wrapperName {
+  color: #ffcc01;
+}
+
+.wrapperCardBody {
+  margin-top: 15px;
+}
+
+.typesText {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+
+.typeName {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.755);
+  margin-right: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+  .cardContainer {
+    flex: 0 0 calc(50%); 
+  }
+
+  .wrapperCardImage img {
+    width: 150px; 
+  }
+
+  .wrapperName {
+    font-size: 25px;
+  }
+
+  .typeName {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .cardContainer {
+    flex: 0 0 calc(100%); 
+  }
+
+  .wrapperCardImage img {
+    width: 120px; 
+  }
+
+  .wrapperName {
+    font-size: 20px; 
+  }
+
+  .typeName {
+    font-size: 16px; 
+  }
+}

@@ -9,9 +9,9 @@ const SearchBar = (props) => {
 
   const { onSearch } = props;
   return (
-    <div>
-      <input className={styles.input} type="search" onChange={handleChange} value = {name}/>
-      <button className={styles.wrapperButton} onClick={() => onSearch(name)}>Search</button>
+    <div className={styles.container}>
+      <input className={styles.input} placeholder = "Search a pokemon.." type="search" onChange={handleChange} value = {name}/>
+      <button className={styles.button} onClick={() => onSearch(name)}>SEARCH</button>
     </div>
   )
 }

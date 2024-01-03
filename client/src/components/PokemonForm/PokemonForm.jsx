@@ -1,13 +1,12 @@
-import axios from "axios"
+import axios from "axios";
 import styles from "./PokemonForm.module.css";
 import validation from "./validation";
 import { useEffect, useState } from "react";
-
+import pokeball from "../Image/pokeball.png"
 
 const PokemonForm = () => {
-
-    //LOCAL STATES
-    const [pokemonData, setPokemonData] = useState ({
+  // LOCAL STATES
+  const [pokemonData, setPokemonData] = useState({
     name: "",
     img: "",
     hp: "",
@@ -16,54 +15,57 @@ const PokemonForm = () => {
     speed: null,
     height: null,
     weight: null,
-    types: [],  
-    });
-    const [errors, setErrors] = useState({});
-    const [types, setTypes] = useState([])
+    types: ["", ""],
+  });
+  const [errors, setErrors] = useState({});
+  const [types, setTypes] = useState([]);
 
-    useEffect(() => {
-        const fetchTypes = async () => {
-
-            try {
-                const response = await axios.get("http://localhost:3001/types");
-                setTypes(response.data)
-
-            } catch (error) {
-                console.error("Error fetching types:", error);
-            }
-        };
-        fetchTypes()
-    }, []);
-
-    //HANDLE FUNCTIONS
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-
-        setPokemonData({
-            ...pokemonData,
-            [name]: value.toLowerCase(),
-        });
-
-        setErrors({
-            ...errors,
-            [name]: "",
-        });
+  useEffect(() => {
+    const fetchTypes = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/types");
+        setTypes(response.data);
+      } catch (error) {
+        console.error("Error fetching types:", error);
+      }
     };
+    fetchTypes();
+  }, []);
 
-    const handleTypeCheckboxChange = (e) => {
-        const { value, checked } = e.target;
-        setPokemonData((prevData) => ({
-          ...prevData,
-          types: checked
-            ? [...prevData.types, value]
-            : prevData.types.filter((type) => type !== value),
-        }));
-      };
+  // HANDLE FUNCTIONS
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+  
+    setPokemonData({
+      ...pokemonData,
+      [name]: value.toLowerCase(),
+    });
+  
+    setErrors({
+      ...errors,
+      [name]: "",
+    });
+  };
+  
+  const handleTypeChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "types1") {
+      setPokemonData({
+        ...pokemonData,
+        types: [value, pokemonData.types[1]],
+      });
+    } else if (name === "types2") {
+      setPokemonData({
+        ...pokemonData,
+        types: [pokemonData.types[0], value],
+      });
+    }
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const validationErrors = validation(pokemonData);
-        setErrors(validationErrors);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationErrors = validation(pokemonData);
+    setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
       try {
@@ -83,13 +85,10 @@ const PokemonForm = () => {
             speed: null,
             height: null,
             weight: null,
-            types: [],
+            types: ["", ""],
           });
         } else {
-          console.error(
-            "Error creating Pokemon:",
-            response.data.message
-          );
+          console.error("Error creating Pokemon:", response.data.message);
         }
       } catch (error) {
         console.error("Error:", error);
@@ -97,74 +96,106 @@ const PokemonForm = () => {
     } else {
       setErrors(validationErrors);
     }
-    }
+  };
 
   return (
-    <div>
-        <h2>Create a New Pokemon</h2>
-        <form className={styles.form} onSubmit={handleSubmit}>
-            <label>
+    <div className={styles.formContainer}>
+
+      <form  onSubmit={handleSubmit}>
+        <img src={pokeball} alt="pokeball"/>
+        <h2>CREATE A NEW POKEMON</h2>
+        <div className={styles.fieldContainer}>
+          <label className={styles.field}>
+            <span>Name:</span>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={pokemonData.name}
+              onChange={handleChange}
+              className={errors.name && styles.error}
+            />
+            {errors.name && <span className={styles.errors}>{errors.name}</span>}
+          </label>
+
+          <label className={styles.field}>
+            <span>Image:</span>
+            <input
+              type="text"
+              name="img"
+              placeholder="Image"
+              value={pokemonData.img}
+              onChange={handleChange}
+              className={errors.img && styles.error}
+            />
+            {errors.img && <span className={styles.errors}>{errors.img}</span>}
+          </label>
+
+          {["hp", "attack", "defense", "speed", "height", "weight"].map((field) => (
+            <div key={field} className={styles.field}>
+              <label>
+                <span>{field.charAt(0).toUpperCase() + field.slice(1)}:</span>
                 <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={pokemonData.name}
+                  type="number"
+                  name={field}
+                  placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                  value={pokemonData[field] || ""}
                   onChange={handleChange}
+                  className={errors[field] && styles.error}
                 />
-                {errors.name && <span className={styles.errors}>{errors.name}</span>}
-            </label>
-
-            <label>
-                <input
-                  type="text"
-                  name="img"
-                  placeholder="Image"
-                  value={pokemonData.img}
-                  onChange={handleChange}
-                />
-                {errors.img && <span className={styles.errors}>{errors.img}</span>}
-            </label>
-
-           {["hp", "attack", "defense", "speed", "height", "weight"].map((field) => (
-          <div key={field}>
-            <label>
-              <input
-                type="number"
-                name={field}
-                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                value={pokemonData[field] || ""}
-                onChange={handleChange}
-              />
-            </label>
-            {errors[field] && <span className={styles.error}>{errors[field]}</span>}
-          </div>
-        ))}
+                {errors[field] && <span className={styles.errors}>{errors[field]}</span>}
+              </label>
+            </div>
+          ))}
+        </div>
 
 
-            <label>
-              <div>
-                {types.map((type) => (
-                    <label key = {type.id} className={styles.checkboxLabel}>
-                        <input
-                            type="checkbox"
-                            name="types"
-                            value={type.name}
-                            checked={pokemonData.types.includes(type.name)}
-                            onChange={handleTypeCheckboxChange}
-                />
-                {type.name}
-                    </label>
-                ))}
-              </div>
-            {errors.types && (
-            <span className={styles.error}>{errors.types}</span>
-          )}
-            </label>
-            <button type="submit">Create Pokemon</button>
-            
-        </form>
+        <div className={styles.typesContainer}>
+          <label>
+            Type 1:
+            <select
+              name="types1"
+              value={pokemonData.types[0]}
+              onChange={handleTypeChange}
+            >
+              <option value="" disabled>
+                Select Type 1
+              </option>
+              {types.map((type) => (
+                <option key={type.id} value={type.name}>
+                  {type.name.toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label>
+            Type 2:
+            <select
+              name="types2"
+              value={pokemonData.types[1]}
+              onChange={handleTypeChange}
+            >
+              <option value="" disabled>
+                Select Type 2
+              </option>
+              {types.map((type) => (
+                <option key={type.id} value={type.name}>
+                  {type.name.toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </label>
+          {errors.types && (
+          <span className={styles.errors}>{errors.types}</span>
+        )}
+        </div>
+
+
+
+        <button className={styles.button} type="submit">CREATE</button>
+      </form>
     </div>
-    
   );
 };
 

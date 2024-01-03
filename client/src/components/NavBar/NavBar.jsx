@@ -2,30 +2,35 @@ import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import PATHROUTES from "../../helpers/PathRoutes.helper";
 import SearchBar from "../SearchBar/SearchBar";
+import logo from "../Image/logo.png"
 
-const Nav = ({onSearch}) => {
+const NavBar = ({onSearch}) => {
  
   return (
     <>
       <header className = {styles.container}>
-        <Link to = "/" className={styles.logo}>
-          <img
-            src="https://archives.bulbagarden.net/media/upload/4/4b/Pok%C3%A9dex_logo.png"
-            alt="Logo"
-          />
-        </Link>
-        <div className={styles.wrapperButtons}>
+        <div className={styles.navLeft}>
+          <Link to = "/">
+            <img
+              className={styles.logo}
+              src={logo}
+              alt="Logo"
+            />
+          </Link>
+        </div>
+
+        <div className={styles.wrapperLinks}>
             <Link to={PATHROUTES.HOME} className={styles.linkRouter}>
-                Home
+                HOME
             </Link>
 
             <Link to={PATHROUTES.FORM} className={styles.linkRouter}>
-                New Pokemon
+                NEW POKEMON
             </Link>
 
             
         </div>
-        <div className={styles.searchBar}>
+        <div className={styles.navRight}>
           <SearchBar onSearch = {onSearch}/>
         </div>
 
@@ -35,4 +40,4 @@ const Nav = ({onSearch}) => {
   )
 }
 
-export default Nav;
+export default NavBar;

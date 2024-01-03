@@ -9,7 +9,7 @@ import PATHROUTES from './helpers/PathRoutes.helper';
 import './App.css';
 
 //REDUX ACTIONS
-import { setSearchedPokemon, clearSearchedPokemon } from './redux/actions';
+import { setSearchedPokemon, clearSearchedPokemon, } from './redux/actions';
 
 
 //COMPONENTS
@@ -19,6 +19,7 @@ import Detail from './components/Detail/Detail';
 import Cards from './components/Cards/Cards';
 import SearchResult from './components/SearchResult/SearchResult';
 import PokemonForm from './components/PokemonForm/PokemonForm';
+import Footer from "./components/Footer/Footer";
 
 function App() {
   //UTILS
@@ -64,15 +65,18 @@ const onSearch = async (name) => {
   return (
     <div className="App">
       
-      {pathname !== PATHROUTES.LANDING && <NavBar onSearch = { onSearch }/>}
-      <Routes>
-        <Route path = {PATHROUTES.LANDING} element = {<Landing/>} />
-        <Route path = {PATHROUTES.HOME} element = {<Cards />} />
-        <Route path = {PATHROUTES.DETAIL} element = {<Detail/>} />
-        <Route path = {PATHROUTES.SEARCH} element = {<SearchResult/>}/>
-        <Route path = {PATHROUTES.FORM} element = {<PokemonForm/>} />
-      </Routes>
+      <div className="content-container">
+        {pathname !== PATHROUTES.LANDING && <NavBar onSearch={onSearch} />}
 
+        <Routes>
+          <Route path={PATHROUTES.LANDING} element={<Landing />} />
+          <Route path={PATHROUTES.HOME} element={<Cards />} />
+          <Route path={PATHROUTES.DETAIL} element={<Detail />} />
+          <Route path={PATHROUTES.SEARCH} element={<SearchResult />} />
+          <Route path={PATHROUTES.FORM} element={<PokemonForm />} />
+        </Routes>
+      </div>
+      {pathname !== PATHROUTES.LANDING && <Footer />}
     </div>
   );
 }
