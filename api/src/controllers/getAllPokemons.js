@@ -19,7 +19,6 @@ const getAllPokemons = async (req, res) => {
         const infoFromApi = pokemonResponse.data;
 
         const formattedPokemon = formatPokemonFromApi(infoFromApi);
-        formattedPokemon.types = formattedPokemon.types.map(typeName => capitalizeFirstLetter(typeName));
 
         return formattedPokemon;
       })
@@ -30,7 +29,7 @@ const getAllPokemons = async (req, res) => {
     const allPokemons = [...apiList, ...dbList];
     res.status(200).json(allPokemons);
   } catch (error) {
-    console.error('Error fetching Pokémons:', error);
+    console.error('Error fetching Pokémons:', error.message);
     res.status(500).json({ error: "Internal server error" });
   }
 };

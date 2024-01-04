@@ -15,6 +15,7 @@ body {
   box-sizing: border-box;
   margin-top: 30px;
   justify-content: space-around;
+  margin-bottom: 30px;
 }
 
 .content {
@@ -33,13 +34,14 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: start;
 }
 
 .loading{
   display: flex;
   justify-content: center;
   margin-left: 45%;
+  align-self: center;
 }
 
 .order {

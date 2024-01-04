@@ -9,7 +9,7 @@ import PATHROUTES from './helpers/PathRoutes.helper';
 import './App.css';
 
 //REDUX ACTIONS
-import { setSearchedPokemon, clearSearchedPokemon, } from './redux/actions';
+import { setSearchedPokemon, clearSearchedPokemon } from './redux/actions';
 
 
 //COMPONENTS

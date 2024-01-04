@@ -1,7 +1,8 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from "./Card.module.css"
 import Icons from '../Icons/Icons';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 
 const Card = ({name, image, types}) => {
 

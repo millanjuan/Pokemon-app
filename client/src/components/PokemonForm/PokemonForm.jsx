@@ -2,7 +2,8 @@ import axios from "axios";
 import styles from "./PokemonForm.module.css";
 import validation from "./validation";
 import { useEffect, useState } from "react";
-import pokeball from "../Image/pokeball.png"
+import pokeball from "../Image/pokeball.png";
+import { capitalizeFirstLetter } from "../../utils/helpers";
 
 const PokemonForm = () => {
   // LOCAL STATES
@@ -31,22 +32,22 @@ const PokemonForm = () => {
     };
     fetchTypes();
   }, []);
-
+  console.log(types)
   // HANDLE FUNCTIONS
   const handleChange = (e) => {
     const { name, value } = e.target;
-  
+
     setPokemonData({
       ...pokemonData,
-      [name]: value.toLowerCase(),
+      [name]: value,
     });
-  
+
     setErrors({
       ...errors,
       [name]: "",
     });
   };
-  
+
   const handleTypeChange = (e) => {
     const { name, value } = e.target;
     if (name === "types1") {
@@ -100,48 +101,44 @@ const PokemonForm = () => {
 
   return (
     <div className={styles.formContainer}>
-
-      <form  onSubmit={handleSubmit}>
-        <img src={pokeball} alt="pokeball"/>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <img src={pokeball} alt="pokeball" className={styles.pokeballImage} />
         <h2>CREATE A NEW POKEMON</h2>
         <div className={styles.fieldContainer}>
           <label className={styles.field}>
-            <span>Name:</span>
             <input
               type="text"
               name="name"
               placeholder="Name"
               value={pokemonData.name}
               onChange={handleChange}
-              className={errors.name && styles.error}
+              className={`${styles.input} ${errors.name && styles.error}`}
             />
             {errors.name && <span className={styles.errors}>{errors.name}</span>}
           </label>
 
           <label className={styles.field}>
-            <span>Image:</span>
             <input
               type="text"
               name="img"
               placeholder="Image"
               value={pokemonData.img}
               onChange={handleChange}
-              className={errors.img && styles.error}
+              className={`${styles.input} ${errors.img && styles.error}`}
             />
             {errors.img && <span className={styles.errors}>{errors.img}</span>}
           </label>
 
           {["hp", "attack", "defense", "speed", "height", "weight"].map((field) => (
             <div key={field} className={styles.field}>
-              <label>
-                <span>{field.charAt(0).toUpperCase() + field.slice(1)}:</span>
+              <label className={styles.field}>
                 <input
                   type="number"
                   name={field}
                   placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
                   value={pokemonData[field] || ""}
                   onChange={handleChange}
-                  className={errors[field] && styles.error}
+                  className={`${styles.input} ${errors[field] && styles.error}`}
                 />
                 {errors[field] && <span className={styles.errors}>{errors[field]}</span>}
               </label>
@@ -149,11 +146,10 @@ const PokemonForm = () => {
           ))}
         </div>
 
-
         <div className={styles.typesContainer}>
           <label>
-            Type 1:
             <select
+              className={styles.typesSelect}
               name="types1"
               value={pokemonData.types[0]}
               onChange={handleTypeChange}
@@ -163,15 +159,15 @@ const PokemonForm = () => {
               </option>
               {types.map((type) => (
                 <option key={type.id} value={type.name}>
-                  {type.name.toUpperCase()}
+                  {capitalizeFirstLetter(type.name)}
                 </option>
               ))}
             </select>
           </label>
 
           <label>
-            Type 2:
             <select
+              className={styles.typesSelect}
               name="types2"
               value={pokemonData.types[1]}
               onChange={handleTypeChange}
@@ -181,17 +177,15 @@ const PokemonForm = () => {
               </option>
               {types.map((type) => (
                 <option key={type.id} value={type.name}>
-                  {type.name.toUpperCase()}
+                  {capitalizeFirstLetter(type.name)}
                 </option>
               ))}
             </select>
           </label>
           {errors.types && (
-          <span className={styles.errors}>{errors.types}</span>
-        )}
+            <span className={styles.errors}>{errors.types}</span>
+          )}
         </div>
-
-
 
         <button className={styles.button} type="submit">CREATE</button>
       </form>

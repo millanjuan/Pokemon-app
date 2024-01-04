@@ -1,34 +1,46 @@
 .landingContainer {
-    margin:0;
+    margin: 0;
     padding: 0;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("C:\Users\milla\OneDrive\Documentos\Henry\PI\PI-Pokemon-main\client\src\images\Landing-background.jpg");
-    background-size:cover;
+    background-image: url("../Image/background.png");
+    background-size: cover;
+    background-position: bottom;
     overflow: hidden;
-}
-
-.titlewrapper{
+  }
+  
+  .titleWrapper {
     position: absolute;
-    top: -100px;
+    top: 50px; 
     left: 50%;
     transform: translateX(-50%);
     transition: top 1s ease;
-}
-
-.titleImage {
-    width: 200px;
+  }
+  
+  .titleImage {
+    width: 80%;
     height: auto;
-}
-
-.buttonWrapper {
-    margin-top: 20px;
-}
-
-.button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3498db ;
-}
+  }
+  
+  .buttonWrapper {
+    margin-bottom:20px;
+  }
+  
+  .button {
+    padding: 15px 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .button:hover {
+    background-color: #3498db;
+  }

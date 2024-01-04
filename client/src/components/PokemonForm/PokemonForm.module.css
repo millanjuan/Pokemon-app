@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 }
 
-form {
+.form {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 25px;
   color: rgba(0, 0, 0, 0.755);
-  margin-top: 10px;
   transition: color 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -18,56 +18,88 @@ form {
   background-color: rgba(255, 255, 255, 0.825);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  padding: 20px;
-  margin-top: 25px;
+  padding: 30px
 }
 
-h2 {
-  text-align: center; /* Centrar el título horizontalmente */
-}
-
-img {
-  width: 40%;
+.pokeballImage {
+  width: 30%;
   align-self: center;
 }
+
 .fieldContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .field {
-  margin-bottom: 20px; /* Añadido margen inferior entre campos */
-}
-
-label {
-  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
+
 }
 
-input,
-select {
+.field input {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: rgba(0, 0, 0, 0.755);
   margin-top: 10px;
-  transition: color 0.3s ease-in-out;
-  margin-top: 5px;
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   font-size: 25px;
   transition: border-color 0.3s ease;
-}
-
-input.error,
-select.error {
-  border-color: #e74c3c;
+  width: 300px;
 }
 
 .errors {
   color: #e74c3c;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.typesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px; 
+}
+
+.typesContainer select {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #2980b9;
+  border-radius: 4px;
+  background-color: #3498db;
+  color: white;
+  overflow: hidden;
+  font-size: 25px;
+  width: 200px;
+}
+
+.input.error {
+  border-color: #e74c3c;
+}
+
+.typesContainer select option {
+  background-color: #3498db;
+  border: 2px solid #2980b9;
+  color: white;
+  padding: 8px;
+  transition: background-color 0.3s ease;
+  font-size: 22px;
+}
+
+.typesContainer select option:checked {
+  background-color: #2980b9;
+}
+
+.typesContainer select:hover {
+  border-color: white;
+  height: auto;
+}
+
+.typesContainer select:active {
+  background-color: #2980b9;
 }
 
 .button {
@@ -82,15 +114,7 @@ select.error {
   margin-top: 15px;
   align-self: center;
 }
-select{
-  color:white
-}
 
 .button:hover {
   background-color: #2980b9;
-}
-
-.stringField{
-  display: flex;
-  flex-direction: column;
 }

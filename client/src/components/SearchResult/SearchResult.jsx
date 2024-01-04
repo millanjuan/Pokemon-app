@@ -1,26 +1,18 @@
-import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Card from "../Card/Card";
-import { clearSearchedPokemon} from "../../redux/actions";
+import styles from "./SearchResult.module.css";
 
 const SearchResult = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("query");
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    return () => {
-      dispatch(clearSearchedPokemon());
-    };
-  }, [dispatch]);
 
   const searchedPokemon = useSelector((state) => state.searchedPokemon);
 
   return (
-    <div>
+    <div className={styles.searchResultContainer}>
       <h2>Search Results for "{query}"</h2>
 
       {searchedPokemon ? (

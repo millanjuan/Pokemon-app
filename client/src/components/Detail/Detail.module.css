@@ -1,6 +1,5 @@
 .wrapperDetail {
-    margin: auto;
-    margin-top: 25px;
+    margin: 25px 80px 25px 80px;
     width: 90%;
     height: 800px;
     display: flex;
@@ -66,7 +65,7 @@
 
 .typesText h3 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     color: rgba(0, 0, 0, 0.755);
     margin-right: 8px;
 }

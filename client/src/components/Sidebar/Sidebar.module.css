@@ -1,47 +1,57 @@
 .order {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  color: white; /* Cambiado el color del texto a blanco */
 }
-  
-select {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 16px;
-  margin-bottom: 10px;
-  padding: 8px;
-  border: 1px solid #3498db;
-  border-radius: 4px;
-  background-color: #3498db;
-  overflow: hidden; 
+
+.order > select {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #2980b9; 
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white; 
+    overflow: hidden;
+    width: 240px;
+    font-size: 25px;
+
 }
 
 select option {
   background-color: #3498db;
-  border: 2px solid #3498db;
+  border: 2px solid #2980b9; 
   color: white;
   padding: 8px;
   transition: background-color 0.3s ease;
+  font-size: 22px;
 }
 
 select option:checked {
   background-color: #2980b9;
 }
-  
+
 select:hover {
   border-color: white;
-  height: auto; 
+  height: auto;
 }
-  
+
 select:active {
   background-color: #2980b9;
 }
-  
+
 .sidebar {
   border-radius: 30px;
   background-color: #2c3e50b1;
   padding: 20px;
   margin-right: 20px;
   margin-top: 12px;
-  min-width: 200px;
+  width: 250px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 300px;
+  height: 400px;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
 }

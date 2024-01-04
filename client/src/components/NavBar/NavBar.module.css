@@ -4,33 +4,33 @@
   justify-content: space-between;
   align-items: center;
   background-color: #2c3e50;
-  padding: 10px; /* Añadido un relleno para mejorar la apariencia */
+  padding: 10px; 
 }
 
 .logo {
-  width: 250px; /* Reducido el ancho del logo */
-  margin-left: 10px; /* Ajustado el margen izquierdo */
+  width: 250px; 
+  margin-left: 10px; 
 }
 
 .wrapperLinks {
   display: flex;
-  padding-left: 10px; /* Ajustado el espaciado izquierdo */
+  padding-left: 10px; 
 }
 
 .navLeft {
-  margin-left: 5px; /* Ajustado el margen izquierdo */
+  margin-left: 5px; 
 }
 
 .linkRouter {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   display: flex;
-  font-size: 30px; /* Ajustado el tamaño de la fuente para mejor adaptabilidad */
+  font-size: 30px; 
   text-decoration: none;
   color: #ecf0f1;
-  margin: 5px; /* Ajustado el margen */
+  margin: 5px; 
   background-color: #3498db;
-  border-radius: 20px; /* Reducido el radio del borde */
-  padding: 7px 18px; /* Ajustado el espaciado interior */
+  border-radius: 20px; 
+  padding: 7px 18px; 
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -39,16 +39,14 @@
   background-color: #2980b9;
 }
 
-/* Nuevo estilo para el SearchBar */
 .navRight {
   display: flex;
   align-items: center;
-  margin-right: 10px; /* Ajustado el margen derecho */
+  margin-right: 10px;
 }
 
 
 
-/* Nuevos estilos para dispositivos medianos (hasta 900px) */
 @media only screen and (max-width: 900px) {
   .container {
     flex-direction: column;
@@ -64,7 +62,7 @@
   .logo {
     margin-left: 0;
     margin-bottom: 10px;
-    width: 200px; /* Reducir el ancho del logo */
+    width: 200px; 
   }
 
   .navRight {
@@ -78,10 +76,8 @@
   }
 }
 
-/* Nuevos estilos para dispositivos pequeños (hasta 768px) */
 @media only screen and (max-width: 768px) {
   .container {
-    /* Ajustes adicionales según sea necesario para pantallas más pequeñas */
     padding: 5px;
   }
 
@@ -92,7 +88,7 @@
   }
 
   .logo {
-    width: 150px; /* Reducir aún más el ancho del logo */
+    width: 150px; 
   }
 
   .navRight {
@@ -101,8 +97,8 @@
   }
 
   .linkRouter {
-    font-size: 18px; /* Reducir el tamaño de la fuente */
+    font-size: 18px;
     margin: 3px 0;
-    padding: 5px 12px; /* Ajustar el espaciado interior */
+    padding: 5px 12px; 
   }
 }

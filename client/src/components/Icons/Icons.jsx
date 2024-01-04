@@ -20,6 +20,8 @@ import Steel from './image/Steel.png';
 import Unknown from './image/Unknown.png';
 import Water from './image/Water.png';
 
+import React from 'react';
+
 const icon = {
     Bug: Bug,
     Dark: Dark,

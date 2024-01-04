@@ -10,11 +10,9 @@ const validation = (data) => {
     }
 
     //Image
-    if (!data.img.trim()) {
-        errors.img = "Image URL is required.";
-      } else if (typeof data.img !== "string") {
-        errors.img = "Image URL must be a text string.";
-      }
+    if (!data.img) {
+        errors.img = "Image is required.";
+      } 
 
     // HP, Attack, Defense
     ["hp", "attack", "defense"].forEach((field) => {

@@ -1,4 +1,10 @@
-import { SET_ALL_POKEMONS, GET_TYPES, SET_SEARCHED_POKEMON, CLEAR_SEARCHED_POKEMON, FILTER_BY_ORIGIN, ORDER_POKE_BY_NAME, ORDER_POKE_BY_ATTACK, GET_POKE_BY_NAME, FILTER_BY_TYPE } from "./action_types";
+import { SET_ALL_POKEMONS, 
+    GET_TYPES, 
+    SET_SEARCHED_POKEMON, 
+    CLEAR_SEARCHED_POKEMON, 
+    FILTER_BY_ORIGIN, 
+    ORDER_POKEMON,
+    FILTER_BY_TYPE } from "./action_types";
 
 const initialState = {
     allPokemon : [],
@@ -16,26 +22,22 @@ const rootReducer = (state = initialState, {type, payload}) => {
                 allPokemon: payload,
                 
             }
-        case ORDER_POKE_BY_NAME:
-            let allPoke = payload === 'asc'
-                ? [...state.allPokemon].sort((a, b) => a.name.localeCompare(b.name))
-                : [...state.allPokemon].sort((a, b) => b.name.localeCompare(a.name));
-            
-              return {
-                ...state,
-                pokemones: payload === 'All' ? state.allPokemon : allPoke
-              };
-        
-     
-        case ORDER_POKE_BY_ATTACK:
-            let allPokeAttack = payload === 'asc'
-            ? [...state.allPokemon].sort((a, b) => a.attack - b.attack)
-            : [...state.allPokemon].sort((a, b) => b.attack - a.attack);
-  
-        return {
-            ...state,
-            pokemones: payload === 'All' ? state.allPokemon : allPokeAttack
-        };
+        case ORDER_POKEMON:
+            let allPoke;
+            if (payload.orderType === 'name') {
+                allPoke = payload.order === 'asc'
+                    ? [...state.allPokemon].sort((a, b) => a.name.localeCompare(b.name))
+                    : [...state.allPokemon].sort((a, b) => b.name.localeCompare(a.name));
+            } else if (payload.orderType === 'attack') {
+                allPoke = payload.order === 'asc'
+                    ? [...state.allPokemon].sort((a, b) => a.attack - b.attack)
+                    : [...state.allPokemon].sort((a, b) => b.attack - a.attack);
+            }
+    
+                return {
+                    ...state,
+                    pokemones: payload.order === 'All' ? state.allPokemon : allPoke,
+                };
     
         case GET_TYPES:
             return {
